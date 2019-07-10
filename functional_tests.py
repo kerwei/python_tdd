@@ -37,7 +37,7 @@ class NewVisitorTest(unittest.TestCase):
         # When she hits enter, the page updates, and now the page lists "1: Buy peacock feathers" as an item in a to-do list 
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
-        self.checkfor_row_listtable("1. Buy peacock feathers")
+        self.checkfor_row_listtable("1: Buy peacock feathers")
 
         # There is still a text box inviting her to add another item.
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -46,8 +46,8 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
         # The page updates again, and now shows both items on her list
-        self.checkfor_row_listtable("1. Buy peacock feathers")
-        self.checkfor_row_listtable("2. Use peacock feathers to make a fly")
+        self.checkfor_row_listtable("1: Buy peacock feathers")
+        self.checkfor_row_listtable("2: Use peacock feathers to make a fly")
 
     # Edith wonders whether the site will remember her list. 
 
