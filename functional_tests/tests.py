@@ -13,7 +13,13 @@ MAXWAIT = 10
 
 class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.profile = webdriver.FirefoxProfile()
+        self.profile.set_preference('browser.cache.disk.enable', False)
+        self.profile.set_preference('browser.cache.memory.enable', False)
+        self.profile.set_preference('browser.cache.offline.enable', False)
+        self.profile.set_preference('network.http.use-cache', False)
+
+        self.browser = webdriver.Firefox(self.profile)
         staging_server = os.environ.get('STAGING_SERVER')
 
         if staging_server:
