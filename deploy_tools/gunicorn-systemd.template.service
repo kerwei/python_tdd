@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn server for DOMAIN
+
+[Service]
+Restart=on-failure
+User=kerwei
+WorkingDirectory=/home/kerwei/sites/DOMAIN
+EnvironmentFile=/home/kerwei/sites/DOMAIN/.env
+ExecStart=/home/kerwei/sites/DOMAIN/virtualenv/bin/gunicorn \
+    --bind unix:/home/kerwei/tmp/DOMAIN.socket superlists.wsgi
+
+[Install]
+WantedBy=multi-user.target
