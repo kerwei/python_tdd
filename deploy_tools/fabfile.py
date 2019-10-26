@@ -4,9 +4,11 @@ from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = r'https://github.com/kerwei/python_tdd'
+sitename = 'python_tdd'
 
 def deploy():
-    site_folder = f'/home/{env.user}/sites/{env.host}'
+    # site_folder = f'/home/{env.user}/sites/{env.host}'
+    site_folder = f'/home/{env.user}/sites/{sitename}'
     run(f'mkdir -p {site_folder}')
 
     with cd(site_folder):
@@ -33,7 +35,7 @@ def _update_virtualenv():
     run('./virtualenv/bin/pip install -r requirements.txt')
 
 def _create_or_update_dotenv():
-    append('.env', 'DJAONGO_DEBUG_FALSE=y')
+    append('.env', 'DJANGO_DEBUG_FALSE=y')
     append('.env', f'SITENAME={env.host}')
     current_contents = run('cat .env')
 
