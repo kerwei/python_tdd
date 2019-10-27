@@ -33,7 +33,7 @@ def _get_latest_source():
 
 def _update_virtualenv():
     if not exists('virtualenv/bin/pip'):
-        run(f'python3.6 -m -venv virtualenv')
+        run(f'python3.6 -m venv virtualenv')
 
     run('./virtualenv/bin/pip install -r requirements.txt')
 
