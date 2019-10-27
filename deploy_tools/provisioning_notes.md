@@ -17,11 +17,16 @@ eg. on Ubuntu:
 ## Nginx Virtual Host config
   * see nginx.template.conf
   * replace DOMAIN with e.g. staging.my-domain.com
+  * add to /etc/nginx/sites-available
+  * crete a symlink at /etc/nginx/sites-enabled to /etc/nginx/sites-available
 
 
 ## Systemd service
   * see gunicorn-systemd.template.service
   * replace DOMAIN with e.g. staging.my-domain.com
+  * add /etc/systemd/system/gunicorn-my-domain.service
+  * reload systemctl daemon and nginx
+  * enable guniconr-my-domain service and start
 
 
 
