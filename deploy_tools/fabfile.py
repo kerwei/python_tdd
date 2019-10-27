@@ -4,11 +4,14 @@ from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = r'https://github.com/kerwei/python_tdd'
-sitename = 'python_tdd'
+
+if not env.sitename:
+    env['sitename'] = 'python_tdd'
+
 
 def deploy():
     # site_folder = f'/home/{env.user}/sites/{env.host}'
-    site_folder = f'/home/{env.user}/sites/{sitename}'
+    site_folder = f'/home/{env.user}/sites/{env.sitename}'
     run(f'mkdir -p {site_folder}')
 
     with cd(site_folder):
